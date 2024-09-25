@@ -34,21 +34,27 @@ function MianScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-700 flex flex-col items-center justify-center">
+<div className="min-h-screen bg-gray-700 flex flex-col items-center justify-center">
+  <div className="rounded-xl p-6 md:p-10 shadow-lg bg-slate-500 flex flex-col items-center justify-center shadow-black w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl">
+    <img src={svg} alt="todoList" className="w-1/2 md:w-1/3 mb-4" /> {/* Scales the image */}
     
-    <div className=" rounded-xl p-10 shadow-xl bg-slate-500 flex flex-col items-center shadow-white justify-center">
-     <img src={svg}  alt="todoList"  className="text-gray-700"/>
-      <h1 className="text-4xl font-bold text-gray-900 mb-1 text-pretty">Todo App</h1>
-      <h2 className="text-start mx-5 font-medium text-gray-900  mb-4">Add your task here</h2>
-      <TodoForm addTask={addTask} />
-      <TodoList
-        tasks={tasks}
-        updateTask={updateTask}
-        deleteTask={deleteTask}
-        toggleTaskStatus={toggleTaskStatus}
-      />
-      </div>
-    </div>
+    <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2 text-pretty">Todo App</h1>
+    
+    <h2 className="text-center text-lg md:text-xl mx-4 md:mx-5 font-medium text-gray-900 mb-4">
+      Add your task here
+    </h2>
+    
+    <TodoForm addTask={addTask} />
+    
+    <TodoList
+      tasks={tasks}
+      updateTask={updateTask}
+      deleteTask={deleteTask}
+      toggleTaskStatus={toggleTaskStatus}
+    />
+  </div>
+</div>
+
   );
 }
 
