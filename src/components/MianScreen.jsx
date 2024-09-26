@@ -36,7 +36,7 @@ function MianScreen() {
   return (
 <div className="min-h-screen bg-gray-700 flex flex-col items-center justify-center">
   <div className="rounded-xl p-6 md:p-10 shadow-lg bg-slate-500 flex flex-col items-center justify-center shadow-black w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl">
-    <img src={svg} alt="todoList" className="w-1/2 md:w-1/3 mb-4" /> {/* Scales the image */}
+    <img src={svg} alt="todoList" className="w-1/4 md:w-1/3 sm:w-1/3 mb-4" /> {/* Scales the image */}
     
     <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2 text-pretty">Todo App</h1>
     

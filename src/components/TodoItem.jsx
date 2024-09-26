@@ -11,70 +11,75 @@ const TodoItem = ({ task, updateTask, deleteTask, toggleTaskStatus }) => {
   };
 
   return (
-    <li
-      className={`flex flex-col p-4 mb-2  rounded-md shadow-xl shadow-black ${
-        task.completed ? "bg-green-300" : "bg-gray-300"
+<li
+  className={`flex flex-col p-4 mb-2 rounded-md shadow-lg shadow-black ${
+    task.completed ? "bg-green-200" : "bg-gray-300"
+  }`}
+>
+  {isEditing ? (
+    <input
+      type="text"
+      value={newTask}
+      onChange={(e) => setNewTask(e.target.value)}
+      className="flex-grow px-3 py-2 rounded-md bg-gray-100"
+    />
+  ) : (
+    <span
+      className={`flex-grow text-gray-900 ${
+        task.completed ? "line-through" : ""
       }`}
     >
-      {/* Task text or input field */}
-      {isEditing ? (
-        <input
-          type="text"
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-          className="flex-grow px-3 py-2 rounded-md bg-gray-100"
-        />
-      ) : (
-        <span
-          className={`flex-grow text-gray-900 ${
-            task.completed ? "line-through" : ""
-          }`}
+      {task.text}
+    </span>
+  )}
+
+  {/* Buttons below the task */}
+  <div className="mt-4 flex flex-col sm:flex-row sm:justify-between">
+    {isEditing ? (
+      <button
+        onClick={handleUpdate}
+        className="px-3 py-1 bg-gray-500 text-white rounded-md hover:bg-gray-700 mb-2 sm:mb-0 flex items-center justify-center"
+      >
+        Save
+      </button>
+    ) : (
+      <>
+        <button
+          onClick={() => setIsEditing(true)}
+          className="px-3 py-1 mx-0 sm:mx-5 mb-2 sm:mb-0 bg-gray-500 text-white rounded-md hover:bg-gray-700 flex items-center justify-center"
         >
-          {task.text}
-        </span>
-      )}
+          <PencilIcon className="h-5 w-5" />
+          <span className="ml-1 text-sm">Edit</span>
+        </button>
 
-      {/* Buttons below the task */}
-      <div className="mt-4 flex justify-between">
-        {isEditing ? (
-          <button
-            onClick={handleUpdate}
-            className="px-3 py-1 bg-gray-500 text-white rounded-md hover:bg-gray-700 flex items-center"
-          >
-            Save
-          </button>
-        ) : (
-          <>
-            <button
-              onClick={() => setIsEditing(true)}
-              className="px-3 py-1 mx-5 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 flex items-center"
-            >
-              <PencilIcon className="h-5 w-5" /> {/* Edit Icon */}
-            </button>
+        <button
+          onClick={() => toggleTaskStatus(task.id)}
+          className={`px-3 py-1 mb-2 sm:mb-0 ${
+            task.completed ? "bg-gray-500" : "bg-green-500"
+          } text-white rounded-md hover:bg-opacity-75 flex items-center justify-center`}
+        >
+          {task.completed ? (
+            <XCircleIcon className="h-5 w-5" />
+          ) : (
+            <CheckCircleIcon className="h-5 w-5" />
+          )}
+          <span className="ml-1 text-sm">
+            {task.completed ? "Undo" : "Completed"}
+          </span>
+        </button>
 
-            <button
-              onClick={() => toggleTaskStatus(task.id)}
-              className={`px-3 py-1 ${
-                task.completed ? "bg-gray-500" : "bg-green-500"
-              } text-white rounded-md hover:bg-opacity-75 flex items-center`}
-            >
-              {task.completed ? (
-                <XCircleIcon className="h-5 w-5" /> // Undo Icon (Cross)
-              ) : (
-                <CheckCircleIcon className="h-5 w-5" /> // Complete Icon
-              )}
-            </button>
+        <button
+          onClick={() => deleteTask(task.id)}
+          className="px-3 py-1 mx-0 sm:mx-4 bg-gray-500 text-white rounded-md hover:bg-gray-700 flex items-center justify-center"
+        >
+          <TrashIcon className="h-5 w-5" />
+          <span className="ml-1 text-sm">Delete</span>
+        </button>
+      </>
+    )}
+  </div>
+</li>
 
-            <button
-              onClick={() => deleteTask(task.id)}
-              className="px-3 py-1 mx-4 bg-red-500 text-white rounded-md hover:bg-red-600 flex items-center"
-            >
-              <TrashIcon className="h-5 w-5" /> {/* Delete Icon */}
-            </button>
-          </>
-        )}
-      </div>
-    </li>
   );
 };
 
