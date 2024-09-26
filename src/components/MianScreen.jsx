@@ -25,8 +25,7 @@ function MianScreen() {
     e.preventDefault();
 
     // Prepare task details for email
-    const taskDetails = tasks
-      .map((task, index) => `${index + 1}. ${task.text}`)
+    const taskDetails = tasks.map((task, index) => `${index + 1}. ${task.text}`)
       .join("\n");
 
     const serviceID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
@@ -48,7 +47,7 @@ function MianScreen() {
       })
       .catch((err) => {
         console.error("FAILED...", err);
-        alert("Failed to send email.");
+        toast.error("Failed to send email.");
       });
   };
 
