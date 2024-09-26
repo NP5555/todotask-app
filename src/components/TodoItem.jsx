@@ -13,7 +13,7 @@ const TodoItem = ({ task, updateTask, deleteTask, toggleTaskStatus }) => {
   return (
 <li
   className={`flex flex-col p-4 mb-2 rounded-md shadow-lg shadow-black ${
-    task.completed ? "bg-green-200" : "bg-gray-300"
+    task.completed ? "bg-[#267b9a]" : "bg-gray-300"
   }`}
 >
   {isEditing ? (

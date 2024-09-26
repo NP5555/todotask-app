@@ -15,7 +15,7 @@ const TodoList = ({ tasks, updateTask, deleteTask, toggleTaskStatus }) => {
           />
         ))
       ) : (
-        <li className="text-center text-gray-500">No tasks available</li>
+        <li className="text-center text-white">No tasks available</li>
       )}
     </ul>
   );
