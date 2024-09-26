@@ -34,7 +34,7 @@ const TodoItem = ({ task, updateTask, deleteTask, toggleTaskStatus }) => {
   )}
 
   {/* Buttons below the task */}
-  <div className="mt-4 flex flex-col sm:flex-row sm:justify-between">
+  <div className="mt-8 flex flex-col sm:flex-row sm:justify-between">
     {isEditing ? (
       <button
         onClick={handleUpdate}
